@@ -7,7 +7,6 @@ DItan is used to Inject scriptable object at the start of a scene.
 
 First, create an empty GameObject in the scene with the component "SceneInjector" attached. 
 Then create a ScriptableInjector asset with Right click > Create/DItan/ScriptableInjector. 
-Fill the ScriptableInjector "Common Objects to Inject" with Scriptable assets. 
 
 ```
 [CreateAssetMenu(menuName = "game/assets/Player stats")]
@@ -27,6 +26,16 @@ public class ScoreBoard : MonoBehaviour
     {
         _scoreText.text = _stats.Score.ToString();
     }
+}
+```
+
+```
+ private void InternalSpawnIntoScene(Vector3 position)
+{
+        _refInScene = _injector.InstantiateNew(_modelPrefab, position, Quaternion.identity);
+        _selectable = _refInScene.GetComponent<Selectable>();
+        _navMeshAgent = _refInScene.GetComponent<NavMeshAgent>();
+        ....
 }
 ```
 
