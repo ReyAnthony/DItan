@@ -39,4 +39,3 @@ public class ScoreBoard : MonoBehaviour
 }
 ```
 
-See demo/ScoreBoard Example for more infos
